@@ -46,52 +46,44 @@ To obtain fitted parameters optimized by package functions,
 
 ```{=R}
 # util_itc example
-  example <- util_itc("Q", c(1,0,1), c(20,20,20), c(1,1,1), c(30,40,50), c(2,4,6)) 
- > example
-[[1]]
-      10% 
-0.4054651 
+  > example <- util_itc("Q", c(1,0,1), c(20,20,20), c(1,1,1), c(30,40,50), c(2,4,6)) 
+  > example
+  [[1]]
+  0.4054651 
 
-[[2]]
-         
-3.159927 
+  [[2]]
+  3.159927 
 
-[[3]]
-          
-0.2074759 
+  [[3]]
+  0.2074759 
 
-[[4]]
-[1] "L-BFGS-B"
+  [[4]]
+  [1] "L-BFGS-B"
 
-[[5]]
-[1] "Risk Return"
+  [[5]]
+  [1] "Risk Return"
 
-[[6]]
-[1] 3
+  [[6]]
+  [1] 3
 
-  est_k <- example[[1]]
-  est_invtemp <- example[[2]] 
-  est_b <-example[[3]]
+  > est_k <- example[[1]]
+  > est_invtemp <- example[[2]] 
+  > est_b <-example[[3]]
 ```
 ```{=R}
 # util_rc example
-  example <- util_rc("E", c(0,0,1), c(10,10,10), c(1,1,1), c(20,30,40), c(0.6,0.5,0.4))
- > example
-[[1]]
-0.7369656
-
-[[2]]
-1.800271  
-
-[[3]]
-[1] "L-BFGS-B"
-
-[[4]]
-[1] "Expected Utility Theory"
-
-[[5]]
-[1] 3
-  
-  est_a <- example[[1]]
-  est_invtemp <- example[[2]] 
+  > example <- util_rc("E", c(0,0,1), c(10,10,10), c(1,1,1), c(20,30,40), c(0.6,0.5,0.4))
+  > example
+  [[1]]
+  0.7369656
+  [[2]]
+  1.800271  
+  [[3]]
+  [1] "L-BFGS-B"
+  [[4]]
+  [1] "Expected Utility Theory"
+  [[5]]
+  [1] 3
+  > est_a <- example[[1]]
+  > est_invtemp <- example[[2]] 
 ```
