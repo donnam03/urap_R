@@ -33,11 +33,11 @@ $A$ is the payoff amount, $D$ is delay, and $\beta$ and $s$ are extra
 parameters for Quasi Hyperbolic and Generalized Hyperbolic models
 respectively.
 
-The util_itc function takes a model type and data (choices, payoffs, and
-delays) for two options and fits a model to the data. It returns a
-output vector that stores the estimated parameters (k, inverse
-temperature, an extra parameter s or b), fit metrics, model type, and
-number of observations
+The util_itc function intertemporal choice data (choices, payoffs, and
+delays) for two options, fits a model to the data, and returns a output
+vector that stores the estimated parameters (k, inverse temperature, an
+extra parameter s or b), fit metrics, model type, and number of
+observations
 
 Warnings will be issued if all choices in the input data are one-sided
 (all 0 or 1), or if the fitted model predicts all one-sided choices.
@@ -61,7 +61,7 @@ To obtain fitted parameters optimized by package functions,
   [1] "L-BFGS-B"
 
   [[5]]
-  [1] "Risk Return"
+  [1] "Quasi Hyperbolic"
 
   [[6]]
   [1] 3
@@ -76,12 +76,16 @@ To obtain fitted parameters optimized by package functions,
   > example
   [[1]]
   0.7369656
+  
   [[2]]
   1.800271  
+  
   [[3]]
   [1] "L-BFGS-B"
+  
   [[4]]
   [1] "Expected Utility Theory"
+  
   [[5]]
   [1] 3
   > est_a <- example[[1]]

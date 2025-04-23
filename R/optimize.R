@@ -1,3 +1,4 @@
+#rc
 util_diff_rc <-function(target, choice, amt1, amt2, prob1, prob2, modeltype){
   if (modeltype == "E"){
     util1 <- eut(prob1, amt1, exp(target[1]))
@@ -144,6 +145,7 @@ itc_min <- function(choice, amt1, amt2, delay1, delay2,modeltype){
   b_params <- c()
   invtemps <- c()
   if (modeltype == "Q"){
+    model <- "Quasi Hyperbolic"
     bounds <-e_q_bounds(amt1, delay1, amt2, delay2)
     start <- startingpoints(bounds)
     lower_k_log <- ifelse(min(bounds) > 0,log(min(bounds)),log(0.00001))
@@ -171,20 +173,15 @@ itc_min <- function(choice, amt1, amt2, delay1, delay2,modeltype){
     }
 
   } else if (modeltype == "GH") {
+    model <- "Generalized Hyperbolic"
     bounds <-h_gh_bounds(amt1, delay1, amt2, delay2)
     lower_k_log <- ifelse(min(bounds) > 0,log(min(bounds)),log(0.00001))
     upper_k_log <- ifelse(max(bounds) > 0,log(max(bounds)),log(0.00001))
     lower_bounds <- c(lower_k_log, 0,log(0.001))
     upper_bounds <- c(upper_k_log,2,log(2))
-
-    #simple_hyperbolic <- itc_min(choice, amt1, amt2, delay1, delay2,"H")
-    #initial_k <- simple_hyperbolic[[1]]
-    #initial_it <- simple_hyperbolic[[2]]
-    #print(initial_k)
     start <- startingpoints(bounds)
     for (i in 1:5){
       for (j in seq(0, 2, length.out = 5)) {
-      #init <- c(initial_k, initial_it, j)
       init <- c(start[i],1,j)
       result <- optim(par = init, fn = fun,choice = choice,amt1 = amt1, amt2 = amt2,
                   delay1 = delay1, delay2 = delay2, modeltype = modeltype, method
@@ -200,6 +197,7 @@ itc_min <- function(choice, amt1, amt2, delay1, delay2,modeltype){
     }
 
   } else if (modeltype == "E") {
+    model <- "Exponential"
     bounds <-e_q_bounds(amt1, delay1, amt2, delay2)
     start <- startingpoints(bounds)
     lower_k_log <- ifelse(min(bounds) > 0,log(min(bounds)),log(0.00001))
@@ -225,6 +223,7 @@ itc_min <- function(choice, amt1, amt2, delay1, delay2,modeltype){
     }
   } else {
     # modeltype = H
+    model <- "Hyperbolic"
     bounds <-h_gh_bounds(amt1, delay1, amt2, delay2)
     start <- startingpoints(bounds)
     lower_k_log <- ifelse(min(bounds) > 0,log(min(bounds)),log(0.00001))
@@ -250,11 +249,11 @@ itc_min <- function(choice, amt1, amt2, delay1, delay2,modeltype){
     }
   }
   # reformat for models without b parameter
-  fitted_k <- k_params[which.max(likelihoods)]
-  fitted_b <- b_params[which.max(likelihoods)]
-  inv_temp <- invtemps[which.max(likelihoods)]
+  best <- which.max(likelihoods)
+  fitted_k <- k_params[best]
+  fitted_b <- b_params[best]
+  inv_temp <- invtemps[best]
   fit_metrics = "L-BFGS-B"
   num_obs = length(amt1)
   return (list(fitted_k,inv_temp, fitted_b, fit_metrics, model, num_obs))
 }
-
