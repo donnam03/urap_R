@@ -13,10 +13,10 @@ util_rc(modeltype, choice, amt1, prob1, amt2, prob2)
   \item{modeltype}{
     A character string indicating which model to fit. Options include:
     \itemize{
-      \item{"E"}: Expected utility, where ( U = p A^ \alpha)
+      \item{"E"}: Expected utility, where ( U = p A^ alpha)
       \item{"R"}: Risk-return, where (U = EV - b *Var)
-      \item{"W"}: Weber, where ( U = EV - b*CV), and ( CV = \sqrt{Var}/EV)
-      \item{"H"}: Hyperbolic, where ( U = A / (1 + h * \theta)), with ( \theta = (1 - p) / p)
+      \item{"W"}: Weber, where ( U = EV - b*CV), and ( CV = sqrt(Var)/EV)
+      \item{"H"}: Hyperbolic, where ( U = A / (1 + h * theta)), with ( theta = (1 - p) / p)
     }
   }
   \item{choice}{
@@ -44,21 +44,13 @@ parameter fitting is restricted to the boundary and handled separately.
 A list with the following components:
   \item{output}{A list containing:
     \itemize{
-      \item{fitted_param: }{Estimated model parameter (\alpha, b, or h depending on modeltype)}
+      \item{fitted_param: }{Estimated model parameter (alpha, b, or h depending on modeltype)}
       \item{inv_temp: }{Estimated inverse temperature, capturing choice randomness}
     }
   }
   \item{fit_metrics}{Optimization result object from L-BFGS-B}
   \item{modeltype}{The model type used}
   \item{num_observations}{The number of observations (n)}
-}
-
-}
-\author{
-Donna Ma
-}
-\note{
-This function assumes valid, non-missing numeric inputs. It is designed for binary choices between two probabilistic outcomes.
 }
 
 \examples{
