@@ -7,7 +7,13 @@
 util_rc(modeltype, choice, amt1, prob1, amt2, prob2)
 }
 \arguments{
-\item{modeltype}{Character. One of "E", "R", "W", or "H".}
+\item{modeltype}{Character. One of "E", "R", "W", or "H".
+\itemize{
+  \item{"E"}: Expected utility, where U = p * A^alpha
+  \item{"R"}: Risk-return, where U = EV - b * Var
+  \item{"W"}: Weber, where U = EV - b * CV, with CV = sqrt(Var)/EV
+  \item{"H"}: Hyperbolic, where U = A / (1 + h * theta), with theta = (1 - p) / p
+}}
 
 \item{choice}{Numeric vector of 0s and 1s, where 1 = option 1 chosen.}
 
@@ -16,11 +22,18 @@ util_rc(modeltype, choice, amt1, prob1, amt2, prob2)
 \item{amt2, }{prob2 Numeric vectors of outcomes and probabilities for option 2.}
 }
 \value{
-A list containing:
-\item{params}{Fitted parameter(s) and inverse temperature}
-\item{fit_metrics}{Optimization metrics}
-\item{modeltype}{The model used}
-\item{num_observations}{The number of observations used}
+A list with the following components:
+\describe{
+  \item{output}{A list with:
+    \describe{
+      \item{fitted_param}{Estimated model parameter (alpha, b, or h)}
+      \item{inv_temp}{Inverse temperature}
+    }
+  }
+  \item{fit_metrics}{Optimization result object}
+  \item{modeltype}{The model type used}
+  \item{num_observations}{Number of observations}
+}
 }
 \description{
 Fits one of several utility-based decision models to binary choice data.

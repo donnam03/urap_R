@@ -3,6 +3,13 @@
 #' Fits one of several utility-based decision models to binary choice data.
 #'
 #' @param modeltype Character. One of "E", "R", "W", or "H".
+#' \itemize{
+#'   \item{"E"}: Expected utility, where U = p * A^alpha
+#'   \item{"R"}: Risk-return, where U = EV - b * Var
+#'   \item{"W"}: Weber, where U = EV - b * CV, with CV = sqrt(Var)/EV
+#'   \item{"H"}: Hyperbolic, where U = A / (1 + h * theta), with theta = (1 - p) / p
+#' }
+
 #' @param choice Numeric vector of 0s and 1s, where 1 = option 1 chosen.
 #' @param amt1, prob1 Numeric vectors of outcomes and probabilities for option 1.
 #' @param amt2, prob2 Numeric vectors of outcomes and probabilities for option 2.

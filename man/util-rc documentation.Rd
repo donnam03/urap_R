@@ -9,6 +9,7 @@ Fits one of several models to binary risky choice data. Models include expected 
 \usage{
 util_rc(modeltype, choice, amt1, prob1, amt2, prob2)
 }
+
 \arguments{
   \item{modeltype}{
     A character string indicating which model to fit. Options include:
