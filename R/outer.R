@@ -1,3 +1,4 @@
+#' @export
 util_rc<- function(modeltype, choice, amt1, prob1, amt2, prob2){
   flag <- validate_inputs(choice, amt1, amt2, prob1, prob2, modeltype, "R")
   if (flag == 1) {
