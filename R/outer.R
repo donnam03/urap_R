@@ -7,11 +7,18 @@
 #' @param amt1, prob1 Numeric vectors of outcomes and probabilities for option 1.
 #' @param amt2, prob2 Numeric vectors of outcomes and probabilities for option 2.
 #'
-#' @return A list containing:
-#' \item{params}{Fitted parameter(s) and inverse temperature}
-#' \item{fit_metrics}{Optimization metrics}
-#' \item{modeltype}{The model used}
-#' \item{num_observations}{The number of observations used}
+#' @return A list with the following components:
+#' \describe{
+#'   \item{output}{A list with:
+#'     \describe{
+#'       \item{fitted_param}{Estimated model parameter (alpha, b, or h)}
+#'       \item{inv_temp}{Inverse temperature}
+#'     }
+#'   }
+#'   \item{fit_metrics}{Optimization result object}
+#'   \item{modeltype}{The model type used}
+#'   \item{num_observations}{Number of observations}
+#' }
 #'
 #' @examples
 #' util_rc("E", c(0,0,1), c(10,10,10), c(1,1,1), c(20,30,40), c(0.6,0.5,0.4))

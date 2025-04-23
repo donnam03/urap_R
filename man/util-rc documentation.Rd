@@ -12,11 +12,11 @@ util_rc(modeltype, choice, amt1, prob1, amt2, prob2)
 \arguments{
   \item{modeltype}{
     A character string indicating which model to fit. Options include:
-    \itemize{
-      \item{"E"}: Expected utility, where ( U = p A^ alpha)
-      \item{"R"}: Risk-return, where (U = EV - b *Var)
-      \item{"W"}: Weber, where ( U = EV - b*CV), and ( CV = sqrt(Var)/EV)
-      \item{"H"}: Hyperbolic, where ( U = A / (1 + h * theta)), with ( theta = (1 - p) / p)
+    \describe{
+      \item{"E"}{Expected utility: \( U = p \cdot A^{\alpha} \)}
+      \item{"R"}{Risk-return: \( U = EV - b \cdot \text{Var} \)}
+      \item{"W"}{Weber: \( U = EV - b \cdot CV \), with \( CV = \sqrt{Var} / EV \)}
+      \item{"H"}{Hyperbolic: \( U = A / (1 + h \cdot \theta) \), where \( \theta = (1 - p) / p \)}
     }
   }
   \item{choice}{
@@ -42,13 +42,15 @@ parameter fitting is restricted to the boundary and handled separately.
 }
 \value{
 A list with the following components:
-  \item{output}{A list containing:
-    \itemize{
-      \item{fitted_param: }{Estimated model parameter (alpha, b, or h depending on modeltype)}
-      \item{inv_temp: }{Estimated inverse temperature, capturing choice randomness}
+  \describe{
+    \item{output}{A list with:
+      \describe{
+        \item{fitted_param}{Estimated model parameter (alpha, b, or h depending on modeltype)}
+        \item{inv_temp}{Estimated inverse temperature, capturing choice randomness}
+      }
     }
+    \item{fit_metrics}{Optimization result object from L-BFGS-B}
+    \item{modeltype}{The model type used}
+    \item{num_observations}{The number of observations (n)}
   }
-  \item{fit_metrics}{Optimization result object from L-BFGS-B}
-  \item{modeltype}{The model type used}
-  \item{num_observations}{The number of observations (n)}
 }
