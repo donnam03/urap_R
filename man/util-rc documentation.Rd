@@ -52,12 +52,3 @@ A list with the following components:
   \item{modeltype}{The model type used}
   \item{num_observations}{The number of observations (n)}
 }
-
-\examples{
-example <- util_rc("E",
-                   c(0, 0, 1),
-                   c(10, 10, 10),
-                   c(1, 1, 1),
-                   c(20, 30, 40),
-                   c(0.6, 0.5, 0.4))
-}
