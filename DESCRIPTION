@@ -1,7 +1,7 @@
 Package: Util
 Type: Package
 Title: Risky Choice and Intertemporal Choice Modeling
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: person("Donna", "Ma", email = "donna.ma@berkeley.com", role = c("aut", "cre"))
 Description: A R package for binary risky choice and intertemporal choice modeling 
 License: What license is it under?
