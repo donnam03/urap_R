@@ -72,3 +72,24 @@ validate_inputs <- function(choice, amt1, amt2, prob_delay1, prob_delay2,
     return(0)
   }
 }
+predict_rc <- function(output,choice, amt1, amt2, prob1, prob2, modeltype){
+  if(modeltype == "E"|| modeltype == "H"){
+    util <- util_diff_rc(log(output[[1]]), choice, amt1, amt2, prob1, prob2, modeltype)
+  }
+  else{
+    util <- util_diff_rc(output[[1]], choice, amt1, amt2, prob1, prob2, modeltype)
+  }
+  if (all(util>0) || all(util<0)){
+    warning("fitted model predicts that all choices are one sided")
+  }
+}
+predict_itc <- function(output,choice, amt1, amt2, delay1, delay2, modeltype){
+  if (modeltype =="GH"){
+    util <- util_diff_itc(c(log(output[[1]]),output[[2]],log(output[[3]])), choice, amt1, amt2, delay1, delay2, modeltype)
+  } else {
+    util <- util_diff_itc(c(log(output[[1]]),output[[2]],output[[3]]), choice, amt1, amt2, delay1, delay2, modeltype)
+  }
+  if (all(util>0) || all(util<0)){
+    warning("fitted model predicts that all choices are one sided")
+  }
+}
