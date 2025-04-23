@@ -2,9 +2,9 @@ Package: Util
 Type: Package
 Title: Risky Choice and Intertemporal Choice Modeling
 Version: 0.1.1
-Author: Donna Ma
-Maintainer: donna.ma@berkeley.edu
+Authors@R: person("Donna", "Ma", email = "donna.ma@berkeley.com", role = c("aut", "cre"))
 Description: A R package for binary risky choice and intertemporal choice modeling 
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.3.2
