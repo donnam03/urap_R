@@ -248,7 +248,6 @@ itc_min <- function(choice, amt1, amt2, delay1, delay2,modeltype){
       }
     }
   }
-  # reformat for models without b parameter
   best <- which.max(likelihoods)
   fitted_k <- k_params[best]
   fitted_b <- b_params[best]

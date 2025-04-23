@@ -1,7 +1,7 @@
 \name{util_rc}
 \alias{util_rc}
 \title{
-Utility-Based Risky Choice Model Fitting Function
+Risky Choice Model Fitting Function
 }
 \description{
 Fits one of several models to binary risky choice data. Models include expected utility theory, risk-return, Weber, and hyperbolic discounting.
