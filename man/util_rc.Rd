@@ -2,7 +2,7 @@
 % Please edit documentation in R/outer.R
 \name{util_rc}
 \alias{util_rc}
-\title{Fit a Utility-Based Risky Choice Model}
+\title{Fit a Binary Risky Choice Model}
 \usage{
 util_rc(modeltype, choice, amt1, prob1, amt2, prob2)
 }
@@ -17,9 +17,9 @@ util_rc(modeltype, choice, amt1, prob1, amt2, prob2)
 
 \item{choice}{Numeric vector of 0s and 1s, where 1 = option 1 chosen.}
 
-\item{amt1, }{prob1 Numeric vectors of outcomes and probabilities for option 1.}
+\item{amt1, }{prob1 Non-negative Numeric vectors of payoffs and probabilities for option 1.}
 
-\item{amt2, }{prob2 Numeric vectors of outcomes and probabilities for option 2.}
+\item{amt2, }{prob2 Non-negative Numeric vectors of payoffs and probabilities for option 2.}
 }
 \value{
 A list with the following components:
@@ -30,13 +30,13 @@ A list with the following components:
       \item{inv_temp}{Inverse temperature}
     }
   }
-  \item{fit_metrics}{Optimization result object}
+  \item{fit_metrics}{Limited-memory BFGS}
   \item{modeltype}{The model type used}
   \item{num_observations}{Number of observations}
 }
 }
 \description{
-Fits one of several utility-based decision models to binary choice data.
+Fits one of four utility-based decision models to binary choice data.
 }
 \examples{
 util_rc("E", c(0,0,1), c(10,10,10), c(1,1,1), c(20,30,40), c(0.6,0.5,0.4))
